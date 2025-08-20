@@ -64,4 +64,51 @@ def signup_for_activity(activity_name: str, email: str):
 
     # Add student
     activity["participants"].append(email)
+
+    # Validate student is not already signed up
+    if len(activity["participants"]) > activity["max_participants"]:
+        raise HTTPException(status_code=400, detail="Activity is full")
+
     return {"message": f"Signed up {email} for {activity_name}"}
+
+    
+    # Add more activities
+
+    activities.update({
+        "Basketball Team": {
+            "description": "Join the school basketball team and compete in local leagues",
+            "schedule": "Mondays and Thursdays, 4:00 PM - 6:00 PM",
+            "max_participants": 15,
+            "participants": []
+        },
+        "Soccer Club": {
+            "description": "Practice soccer skills and play friendly matches",
+            "schedule": "Wednesdays, 3:30 PM - 5:30 PM",
+            "max_participants": 18,
+            "participants": []
+        },
+        "Art Club": {
+            "description": "Explore painting, drawing, and other visual arts",
+            "schedule": "Tuesdays, 3:30 PM - 5:00 PM",
+            "max_participants": 16,
+            "participants": []
+        },
+        "Drama Society": {
+            "description": "Act, direct, and produce school plays and performances",
+            "schedule": "Fridays, 4:00 PM - 6:00 PM",
+            "max_participants": 20,
+            "participants": []
+        },
+        "Mathletes": {
+            "description": "Compete in math competitions and solve challenging problems",
+            "schedule": "Thursdays, 3:30 PM - 4:30 PM",
+            "max_participants": 10,
+            "participants": []
+        },
+        "Science Club": {
+            "description": "Conduct experiments and explore scientific concepts",
+            "schedule": "Wednesdays, 4:00 PM - 5:00 PM",
+            "max_participants": 12,
+            "participants": []
+        }
+    })
